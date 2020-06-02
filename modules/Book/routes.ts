@@ -6,6 +6,9 @@ import ROUTES from "./routes.config.ts"
 const to = (Router:any) => (router: any, route: any) => 
   genericRouter[route.method](Router, route)
 
+
 export default {
   router: ROUTES.reduce(to(new Router()), {})
 }
+// export default ROUTES.reduce(to(new Router()), {})
+
