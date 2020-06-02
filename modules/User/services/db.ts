@@ -1,5 +1,5 @@
-import { DB_PATH } from "../config.ts";
-import { User } from "../models/user.ts";
+import { DB_PATH } from "./../config.ts";
+import { User } from "./../models/user.ts";
 
 export const fetchData = async (): Promise<User[]> => {
   const data = await Deno.readFile(DB_PATH);

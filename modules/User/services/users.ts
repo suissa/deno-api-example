@@ -1,6 +1,6 @@
 import { fetchData, persistData } from "./db.ts";
-import { User } from "../models/user.ts";
-import createId from "../services/createId.ts";
+import { User } from "./../models/user.ts";
+import createId from "./createId.ts";
 
 type UserData = Pick<User, "name" | "role" | "jiraAdmin">;
 
