@@ -1,5 +1,6 @@
-import Controller from "./controller.ts";
-const ROUTES = [
+import Controller from "./controller.ts"
+
+export default [
   {
     method: 'get',
     path: '/users',
@@ -25,6 +26,4 @@ const ROUTES = [
     path: '/users/:id',
     fn: Controller.remove
   }
-];
-
-export default ROUTES;
+]
