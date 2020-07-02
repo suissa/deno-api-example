@@ -1,7 +1,8 @@
-// const __filename = import.meta.url.split('/').reverse()[0]
+const __filename = import.meta.url.split('/').reverse()[0]
 
 const getGlobals = (url:any) => [
-  // __filename,
+  '.DS_Store',
+  __filename,
   ...url.split('/').reverse().slice(0, 2)
 ]
 
