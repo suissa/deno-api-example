@@ -5,14 +5,14 @@ import getActionsPath from "./../../../helpers/getActionsPath.ts"
 const MODULES:any = []
 const FORBIDEN = getGlobals(import.meta.url)
 
-for await (const {name} of walkSync(getActionsPath(import.meta.url))) {
-  if ( !FORBIDEN.includes(name) ){
-    MODULES.push({
-      name: name.replace('.ts', ''),
-      module: (await import('./' + name)).default
-    })
-  }
-}
+const newModule = async (name:string) => ({
+  name: name.replace('.ts', ''),
+  module: (await import('./' + name)).default
+})
+
+for await (const {name} of walkSync(getActionsPath(import.meta.url))) 
+  if (!FORBIDEN.includes(name))
+    MODULES.push(await newModule(name))
 
 export default MODULES
 
