@@ -1,13 +1,11 @@
 import { walkSync } from "https://deno.land/std/fs/mod.ts"
 import getGlobals from "./../../../helpers/getGlobals.ts"
-import getModuleName from "./../../../helpers/getModuleName.ts"
+import getActionsPath from "./../../../helpers/getActionsPath.ts"
 
 const MODULES:any = []
 const FORBIDEN = getGlobals(import.meta.url)
-const MODULE_NAME = getModuleName(import.meta.url)
-const ACTIONS_PATH = `./modules/${MODULE_NAME}/actions`
 
-for await (const {name} of walkSync(ACTIONS_PATH)) {
+for await (const {name} of walkSync(getActionsPath(import.meta.url))) {
   if ( !FORBIDEN.includes(name) ){
     MODULES.push({
       name: name.replace('.ts', ''),
